@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import math
 from random import *
+from time import perf_counter
 import numpy as np
 
 # Var 11
@@ -71,7 +72,10 @@ Arraray_new = arr_gen(harmonics, 0, 5)
 alpha = arr_gen(harmonics, 0, 5)
 Freg = freg_gen(frequency, harmonics)
 x = xt_gen(counts, harmonics, Arraray_new, Freg, alpha)
+time_before_fft = perf_counter()
 x_fft = fft(x)
+time_after_fft = perf_counter()
+print("fft time = ", time_after_fft - time_before_fft)
 t = np.linspace(0, counts, counts)
 x_fft_real = x_fft.real
 x_fft_img = x_fft.imag
